@@ -1,0 +1,22 @@
+BiteSync set up guide:
+
+Technologies:
+Java
+Node.js
+Tailwind
+React
+Intellij
+
+Installation Guide:
+
+FRONTEND:
+- Download Node.js (https://nodejs.org/en)
+- open frontend in vscode
+- npm install
+- npm start
+
+BACKEND:
+- open backend_Api in intellij
+- ensure build is synced with gradle
+- ensure project structure: JDK 23, language level 17
+- run WebApplication.java
