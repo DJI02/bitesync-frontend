@@ -139,6 +139,9 @@ function Login() {
 
   return (
     <>
+    <script>
+      wakeup;
+    </script>
       <div className="min-h-screen flex flex-col items-center bg-white">
         {/* Header */}
         <div className="w-full h-24 left-0 top-0 pl-[20px] bg-[#A5907E] flex items-row justify-between">
@@ -247,9 +250,6 @@ function Login() {
         Configuration of mobile features is a future goal of this project and is
         in development. Please be patient and check back later. Thank you!
       </Modal>
-      <script>
-      document.addEventListener("DOMContentLoaded", wakeup);
-    </script>
     </>
   );
 }
