@@ -10,7 +10,18 @@ import { useState } from "react";
 import { authenticatedFetch } from "../utils/api";
 import api from "../api";
 
+async function wakeup() {
+  try {
+      const response = await api.get("/wakeup");
+      return;
+    } catch (error) {
+      console.error("Error connecting to server: ", error);
+    }
+}
+
 function Login() {
+  document.addEventListener('DOMContentLoaded', wakeup);
+
   const navigate = useNavigate();
 
   const [userName, setUserName] = useState(""); // Holds the username to be sent to the login API
