@@ -10,18 +10,9 @@ import { useState } from "react";
 import { authenticatedFetch } from "../utils/api";
 import api from "../api";
 
-async function wakeup() {
-  try {
-      const response = await api.get("/wakeup");
-      console.log("Connecting to server.")
-      return;
-    } catch (error) {
-      console.error("Error connecting to server: ", error);
-    }
-}
-
 function Login() {
-  document.addEventListener("DOMContentLoaded", wakeup);
+  fetch(api.get("/wakeup"));
+  console.log("Connecting to server.")
 
   const navigate = useNavigate();
 
