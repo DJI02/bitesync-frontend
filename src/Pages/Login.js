@@ -20,8 +20,6 @@ async function wakeup() {
 }
 
 function Login() {
-  document.addEventListener('DOMContentLoaded', wakeup);
-
   const navigate = useNavigate();
 
   const [userName, setUserName] = useState(""); // Holds the username to be sent to the login API
@@ -248,6 +246,9 @@ function Login() {
         Configuration of mobile features is a future goal of this project and is
         in development. Please be patient and check back later. Thank you!
       </Modal>
+      <script>
+      document.addEventListener("DOMContentLoaded", wakeup);
+    </script>
     </>
   );
 }
