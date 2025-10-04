@@ -21,6 +21,8 @@ async function wakeup() {
 }
 
 function Login() {
+  document.addEventListener("DOMContentLoaded", wakeup);
+
   const navigate = useNavigate();
 
   const [userName, setUserName] = useState(""); // Holds the username to be sent to the login API
