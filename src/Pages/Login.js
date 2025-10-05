@@ -11,9 +11,9 @@ import { authenticatedFetch } from "../utils/api";
 import api from "../api";
 
 function Login() {
-  const wakeupMsg = document.getElementById('wakeup');
-
+  
   async function wakeup() {
+    const wakeupMsg = document.getElementById('wakeup');
     try {
       const response = await fetch(api.get("/wakeup"));
       const data = await response.json();
@@ -25,7 +25,7 @@ function Login() {
     }
   }
 
-  wakeup();
+  document.addEventListener("DOMContentLoaded", wakeup());
 
   const navigate = useNavigate();
 
