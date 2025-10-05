@@ -10,18 +10,21 @@ import { useState } from "react";
 import { authenticatedFetch } from "../utils/api";
 import api from "../api";
 
-function Login() {
+async function wakeup() {
   const wakeup = document.getElementById('wakeup');
-  
-  fetch(api.get("/wakeup"))
-  .then(response => response.json())
-  .then(data => {
+  try {
+    const response = await fetch(api.get("/wakeup"));
+    const data = await response.json();
     console.log(data);
     wakeup.innerHTML = '<p>Server Active.</p>';
-  }).catch(error => {
-    console.error('Connection failed: ', error);
+  } catch(error) {
+    console.error("Connection failed: ", error);
     wakeup.innerHTML = '<p>Connection failed.</p>';
-  })
+  }
+}
+
+function Login() {
+  wakeup();
 
   const navigate = useNavigate();
 
@@ -149,9 +152,9 @@ function Login() {
 
         {/* Outer Dash Box */}
         <div className="flex flex-col items-center justify-center flex-grow p-4 w-[80%] bg-[#F4EFE9]">
-        <div id="wakeup">
-          <p>Connecting to Server...</p>
-        </div>
+          <div id="wakeup">
+            <p>Connecting to Server...</p>
+          </div>
           {/* Inner Dash Box */}
           <div className="bg-white w-[90%] p-8 rounded-lg overflow-auto font-['Inter']">
             <h1 className="text-4xl font-semibold mb-6 text-center">Login</h1>
