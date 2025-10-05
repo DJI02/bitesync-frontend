@@ -10,17 +10,17 @@ import { useState } from "react";
 import { authenticatedFetch } from "../utils/api";
 import api from "../api";
 
-const wakeup = document.getElementById('wakeup');
+const wakeupMsg = document.getElementById('wakeup');
 
 async function wakeup() {
   try {
     const response = await fetch(api.get("/wakeup"));
     const data = await response.json();
     console.log(data);
-    wakeup.innerHTML = '<p>Server Active.</p>';
+    wakeupMsg.innerHTML = '<p>Server Active.</p>';
   } catch(error) {
     console.error("Connection failed: ", error);
-    wakeup.innerHTML = '<p>Connection Failed.</p>';
+    wakeupMsg.innerHTML = '<p>Connection Failed.</p>';
   }
 }
 
