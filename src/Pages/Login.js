@@ -10,8 +10,9 @@ import { useState } from "react";
 import { authenticatedFetch } from "../utils/api";
 import api from "../api";
 
+const wakeup = document.getElementById('wakeup');
+
 async function wakeup() {
-  const wakeup = document.getElementById('wakeup');
   try {
     const response = await fetch(api.get("/wakeup"));
     const data = await response.json();
@@ -19,7 +20,7 @@ async function wakeup() {
     wakeup.innerHTML = '<p>Server Active.</p>';
   } catch(error) {
     console.error("Connection failed: ", error);
-    wakeup.innerHTML = '<p>Connection failed.</p>';
+    wakeup.innerHTML = '<p>Connection Failed.</p>';
   }
 }
 
