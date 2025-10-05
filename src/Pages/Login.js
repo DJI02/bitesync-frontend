@@ -16,9 +16,7 @@ function Login() {
 
   async function wakeup() {
     try {
-      const response = await fetch(api.get("/wakeup"));
-      const data = await response.json();
-      console.log(data);
+      await fetch(api.get("/wakeup"));
       setAwake(true);
     } catch(error) {
       console.error("Connection failed: ", error);
