@@ -22,11 +22,10 @@ function Login() {
           );
           const data = await response.json();
           console.log(data);
+          setAwake(true);
         } catch (error) {
           console.error("Connection failed: ", error);
           setAwakeErr(true);
-        } finally {
-          setAwake(true);
         }
       };
       wakeup();
