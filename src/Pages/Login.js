@@ -10,22 +10,21 @@ import { useState } from "react";
 import { authenticatedFetch } from "../utils/api";
 import api from "../api";
 
-const wakeupMsg = null;
-
-async function wakeup() {
-  try {
-    const response = await fetch(api.get("/wakeup"));
-    const data = await response.json();
-    console.log(data);
-    wakeupMsg.innerHTML = '<p>Server Active.</p>';
-  } catch(error) {
-    console.error("Connection failed: ", error);
-    wakeupMsg.innerHTML = '<p>Connection Failed.</p>';
-  }
-}
-
 function Login() {
-  wakeupMsg = document.getElementById('wakeup');
+  const wakeupMsg = document.getElementById('wakeup');
+
+  async function wakeup() {
+    try {
+      const response = await fetch(api.get("/wakeup"));
+      const data = await response.json();
+      console.log(data);
+      wakeupMsg.innerHTML = '<p>Server Active.</p>';
+    } catch(error) {
+      console.error("Connection failed: ", error);
+      wakeupMsg.innerHTML = '<p>Connection Failed.</p>';
+    }
+  }
+  
   wakeup();
 
   const navigate = useNavigate();
