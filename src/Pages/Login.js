@@ -18,7 +18,8 @@ function Login() {
       const wakeup = async () => {
         try {
           await api.get("/wakeup");
-          setTimeout(setAwake(true), 30000);
+          await setTimeout(30000);
+          setAwake(true);
         } catch (error) {
           console.error("Connection failed: ", error);
           setAwakeErr(true);
