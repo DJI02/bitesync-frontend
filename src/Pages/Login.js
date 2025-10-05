@@ -11,18 +11,15 @@ import { authenticatedFetch } from "../utils/api";
 import api from "../api";
 
 function Login() {
-  const wakeupMsg = document.getElementById('wakeup');
+  const [wakeup, setWakeup] = useState(true);
   
-  wakeupMsg.style.display = 'block';
-
   fetch(api.get("/wakeup"))
   .then(response => response.json())
   .then(data => {
     console.log('Server connected: ', data);
-    wakeupMsg.innerHTML = '<p>Server connected.</p>'
+    setWakeup(false);
   }).catch(error => {
     console.error('Failed to connect to Server: ', error);
-    wakeupMsg.innerHTML = '<p>Failed to connected to server.</p>'
   })
 
   const navigate = useNavigate();
@@ -147,6 +144,11 @@ function Login() {
         {/* Header */}
         <div className="w-full h-24 left-0 top-0 pl-[20px] bg-[#A5907E] flex items-row justify-between">
           <span className="text-white text-6xl font-['Roboto']">BiteSync</span>
+          {wakeup ? (
+            <p>Connecting to server...</p>
+          ) : (
+            <p>Server connected.</p>
+          )}
         </div>
 
         {/* Outer Dash Box */}
