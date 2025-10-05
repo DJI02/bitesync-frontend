@@ -17,10 +17,8 @@ function Login() {
   useEffect(() => {
       const wakeup = async () => {
         try {
-          api.get("/wakeup");
-          await sleep(30000);
           await api.get("/wakeup");
-          setAwake(true)
+          setTimeout(setAwake(true), 30000);
         } catch (error) {
           console.error("Connection failed: ", error);
           setAwakeErr(true);
