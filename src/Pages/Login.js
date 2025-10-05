@@ -21,8 +21,8 @@ function Login() {
             fetch(api.get("/wakeup"))
           );
           const data = await response.json();
-          console.log(data);
-          setAwake(true);
+          console.log("Server connected: ", data);
+          setAwake(true)
         } catch (error) {
           console.error("Connection failed: ", error);
           setAwakeErr(true);
