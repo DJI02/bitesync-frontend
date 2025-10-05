@@ -14,17 +14,19 @@ function Login() {
   const [awake, setAwake] = useState(false);
   const [awakeErr, setAwakeErr] = useState(false);
 
-  async function wakeup() {
-    try {
-      await fetch(api.get("/wakeup"));
-      setAwake(true);
-    } catch(error) {
-      console.error("Connection failed: ", error);
-      setAwakeErr(true);
-    }
-  }
-
-  wakeup();
+  useEffect(() => {
+      const wakeup = async () => {
+        try {
+          await Promise.all(fetch(api.get("/wakeup")));
+        } catch (error) {
+          console.error("Connection failed: ", error);
+          setAwakeErr(true);
+        } finally {
+          setAwake(true);
+        }
+      };
+      wakeup();
+    }, []);
 
   const navigate = useNavigate();
 
@@ -153,10 +155,10 @@ function Login() {
         {/* Outer Dash Box */}
         <div className="flex flex-col items-center justify-center flex-grow p-4 w-[80%] bg-[#F4EFE9]">
           <div id="wakeup">
-            {awake ? (
-              <p>Server Connected</p>
-            ) : awakeErr ? (
+            {awakeErr ? (
               <p>Connection Failed</p>
+            ) : awake ? (
+              <p>Server Connected</p>
             ) : (
               <p>Connecting to Server...</p>
             )}
