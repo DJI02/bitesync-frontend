@@ -10,7 +10,7 @@ import { useState } from "react";
 import { authenticatedFetch } from "../utils/api";
 import api from "../api";
 
-const wakeupMsg = document.getElementById('wakeup');
+const wakeupMsg = null;
 
 async function wakeup() {
   try {
@@ -25,6 +25,7 @@ async function wakeup() {
 }
 
 function Login() {
+  wakeupMsg = document.getElementById('wakeup');
   wakeup();
 
   const navigate = useNavigate();
