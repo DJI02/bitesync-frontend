@@ -17,7 +17,11 @@ function Login() {
   useEffect(() => {
       const wakeup = async () => {
         try {
-          await Promise.all(fetch(api.get("/wakeup")));
+          const response = await Promise.all(
+            fetch(api.get("/wakeup"))
+          );
+          const data = await response.json();
+          console.log(data);
         } catch (error) {
           console.error("Connection failed: ", error);
           setAwakeErr(true);
