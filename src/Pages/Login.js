@@ -11,21 +11,22 @@ import { authenticatedFetch } from "../utils/api";
 import api from "../api";
 
 function Login() {
-  
+  const [awake, setAwake] = useState(false);
+  const [awakeErr, setAwakeErr] = useState(false);
+
   async function wakeup() {
-    const wakeupMsg = document.getElementById('wakeup');
     try {
       const response = await fetch(api.get("/wakeup"));
       const data = await response.json();
       console.log(data);
-      wakeupMsg.innerHTML = "<p>Server Active.</p>";
+      setAwake(true);
     } catch(error) {
       console.error("Connection failed: ", error);
-      wakeupMsg.innerHTML = "<p>Connection Failed.</p>";
+      setAwakeErr(true);
     }
   }
 
-  document.addEventListener("DOMContentLoaded", wakeup());
+  wakeup();
 
   const navigate = useNavigate();
 
@@ -154,7 +155,13 @@ function Login() {
         {/* Outer Dash Box */}
         <div className="flex flex-col items-center justify-center flex-grow p-4 w-[80%] bg-[#F4EFE9]">
           <div id="wakeup">
-            <p>Connecting to Server...</p>
+            {awake ? (
+              <p>Server Connected.</p>
+            ) : awakeErr ? (
+              <p>Connection Failed.</p>
+            ) : (
+              <p>Connecting to Server...</p>
+            )}
           </div>
           {/* Inner Dash Box */}
           <div className="bg-white w-[90%] p-8 rounded-lg overflow-auto font-['Inter']">
