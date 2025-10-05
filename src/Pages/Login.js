@@ -154,9 +154,9 @@ function Login() {
         <div className="flex flex-col items-center justify-center flex-grow p-4 w-[80%] bg-[#F4EFE9]">
           <div id="wakeup">
             {awake ? (
-              <p>Server Connected.</p>
+              <p>Server Connected</p>
             ) : awakeErr ? (
-              <p>Connection Failed.</p>
+              <p>Connection Failed</p>
             ) : (
               <p>Connecting to Server...</p>
             )}
